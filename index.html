@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Today's Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-primary" href="#" onclick="window.location.reload();">Today's Weather</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"
+                            onclick="window.location.reload();">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Favorite Cities
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="getWeather('Jammu')">Jammu</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="getWeather('Chandigarh')">Chandigarh</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="getWeather('Delhi')">Delhi</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#aboutMeModal">About Me</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search any city..."
+                        aria-label="Search" />
+                    <button class="btn btn-primary px-4" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="my-4 p-2 mx-auto text-center heading-1">Weather for <span id="cityName"></span></h1>
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Temperature</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">
+                                <span id="temp"></span>
+                                <small class="text-body-secondary fw-light">°C</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Feels Like <span id="feels_like"></span> °C</li>
+                                <li>Description: <span id="description"></span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Humidity</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">
+                                <span id="humid"></span>
+                                <small class="text-body-secondary fw-light">%</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Humidity is <span id="humidity"></span> %</li>
+                                <li>Pressure is <span id="pressure"></span> hPa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm ">
+                        <div class="card-header py-3 ">
+                            <h4 class="my-0 fw-normal">Wind</h4>
+                        </div>
+                        <div class="card-body">
+                            <h1 class="card-title pricing-card-title">
+                                <span id="winspeed"></span>
+                                <small class="text-body-secondary fw-light">m/s</small>
+                            </h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li>Wind Speed at <span id="speed"></span> m/s</li>
+                                <li>Wind Gusts at <span id="gust"></span> m/s</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2 class="display-6 text-center mb-4 heading-2">Weather for other cities</h2>
+            <div class="table-responsive">
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%"></th>
+                            <th style="width: 10%">Temperature</th>
+                            <th style="width: 10%">Feels like</th>
+                            <th style="width: 10%">Humidity</th>
+                            <th style="width: 10%">Pressure</th>
+                            <th style="width: 10%">Description</th>
+                            <th style="width: 10%">Wind Speed</th>
+                            <th style="width: 10%">Wind Gust</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="text-start"><span id="city1Name"></span></th>
+                            <td id="temp1"></td>
+                            <td id="feels_like1"></td>
+                            <td id="humidity1"></td>
+                            <td id="pressure1"></td>
+                            <td id="description1"></td>
+                            <td id="winspeed1"></td>
+                            <td id="gust1"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start"><span id="city2Name"></span></th>
+                            <td id="temp2"></td>
+                            <td id="feels_like2"></td>
+                            <td id="humidity2"></td>
+                            <td id="pressure2"></td>
+                            <td id="description2"></td>
+                            <td id="winspeed2"></td>
+                            <td id="gust2"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start"><span id="city3Name"></span></th>
+                            <td id="temp3"></td>
+                            <td id="feels_like3"></td>
+                            <td id="humidity3"></td>
+                            <td id="pressure3"></td>
+                            <td id="description3"></td>
+                            <td id="winspeed3"></td>
+                            <td id="gust3"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start"><span id="city4Name"></span></th>
+                            <td id="temp4"></td>
+                            <td id="feels_like4"></td>
+                            <td id="humidity4"></td>
+                            <td id="pressure4"></td>
+                            <td id="description4"></td>
+                            <td id="winspeed4"></td>
+                            <td id="gust4"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="text-start"><span id="city5Name"></span></th>
+                            <td id="temp5"></td>
+                            <td id="feels_like5"></td>
+                            <td id="humidity5"></td>
+                            <td id="pressure5"></td>
+                            <td id="description5"></td>
+                            <td id="winspeed5"></td>
+                            <td id="gust5"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+   
+    <div class="modal fade" id="aboutMeModal" tabindex="-1" aria-labelledby="aboutMeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="aboutMeModalLabel">About the Developer</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 class="fw-bold text-primary border-bottom pb-2">How It Was Made</h6>
+                    <p class="small">This application fetches real-time meteorological data using asynchronous
+                        JavaScript functions. The UI is built for responsiveness and speed.</p>
+
+                    <h6 class="fw-bold text-primary border-bottom pb-2 mt-3">Tech Stack</h6>
+                    <ul class="small">
+                        <li><strong>Frontend:</strong> HTML5, Custom CSS, Bootstrap 5</li>
+                        <li><strong>Logic:</strong> Vanilla JavaScript (ES6+), Fetch API</li>
+                        <li><strong>Backend:</strong> Vercel Serverless Functions (Node.js)</li>
+                        <li><strong>Data:</strong> OpenWeatherMap REST API</li>
+                    </ul>
+
+                    <h6 class="fw-bold text-primary border-bottom pb-2 mt-3">Contact Information</h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li class="mb-2">💼 <strong>LinkedIn:</strong> <a
+                                href="https://www.linkedin.com/in/vaibhav-s-040030237" target="_blank"
+                                class="text-decoration-none">linkedin.com/in/vaibhav-s-040030237</a></li>
+                        <li class="mb-2">📧 <strong>Email:</strong> <a
+                                href="mailto:its.vaibhav.sharma5622@gmail.com@gmail.com"
+                                class="text-decoration-none">its.vaibhav.sharma5622@gmail.com</a></li>
+                        <li>💻 <strong>GitHub:</strong> <a href="https://github.com/Vaibhav-Sharmaa" target="_blank"
+                                class="text-decoration-none">github.com/Vaibhav-Sharmaa</a></li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-bottom d-flex justify-content-end align-items-center">
+        <span style="cursor: pointer; color: white;" data-bs-toggle="modal" data-bs-target="#aboutMeModal"
+            title="About Me">
+            <img src="icons/about_me.png" alt="About Me" style="width: 30px; height: 30px; filter: invert(100%);">
+        </span>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
