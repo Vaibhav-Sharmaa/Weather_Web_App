@@ -18,17 +18,17 @@
 <body>
     <nav class="navbar navbar-expand-md bg-body-tertiary shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold text-primary" href="#" onclick="window.location.reload();">Current Weather</a>
+            <a class="navbar-brand fw-bold p-0 text-primary" href="#" onclick="window.location.reload();">Current
+                Weather</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"
-                            onclick="window.location.reload();">
+                        <a class="nav-link active " aria-current="page" href="#" onclick="window.location.reload();">
                             <i class="bi bi-house-door-fill text-primary"></i>
                             Home</a>
                     </li>
@@ -40,14 +40,14 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#" onclick="getWeather('Jammu')">
-                                <i class="bi bi-1-circle-fill text-primary"></i>
-                                Jammu</a></li>
+                                    <i class="bi bi-1-circle-fill text-primary"></i>
+                                    Jammu</a></li>
                             <li><a class="dropdown-item" href="#" onclick="getWeather('Chandigarh')">
-                                <i class="bi bi-2-circle-fill text-primary"></i>
-                                Chandigarh</a></li>
+                                    <i class="bi bi-2-circle-fill text-primary"></i>
+                                    Chandigarh</a></li>
                             <li><a class="dropdown-item" href="#" onclick="getWeather('Delhi')">
-                                <i class="bi bi-3-circle-fill text-primary"></i>
-                                Delhi</a></li>
+                                    <i class="bi bi-3-circle-fill text-primary"></i>
+                                    Delhi</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -56,7 +56,7 @@
                             About Me</a>
                     </li>
                 </ul>
-            </div
+            </div>
                 <form class="d-flex search-container" role="search">
                 <div class="input-group">
                     <input id="city" class="form-control border-2 border-primary me-0" type="search"
@@ -128,7 +128,7 @@
             </div>
             <h2 class="display-6 text-center mb-4 heading-2">Weather for other cities</h2>
             <div class="table-responsive">
-                <table class="table text-center">
+                <table class="table table-striped text-center">
                     <thead>
                         <tr>
                             <th style="width: 10%"></th>
