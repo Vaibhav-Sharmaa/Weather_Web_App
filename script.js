@@ -40,6 +40,7 @@ const getWeather = (city) => {
 submit.addEventListener("click", (e) => {
     e.preventDefault()
     getWeather(city.value)
+    city.value = ""
 })
 
 const getTableData = (city, id) => {
