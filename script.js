@@ -1,4 +1,4 @@
-const city1 = "Jaipur"
+const city1 = "Delhi"
 const city2 = "Mumbai"
 const city3 = "Lucknow"
 const city4 = "Kolkata"
