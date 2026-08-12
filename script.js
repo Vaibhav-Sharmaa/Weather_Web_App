@@ -4,7 +4,7 @@ const city3 = "Lucknow"
 const city4 = "Kolkata"
 const city5 = "Bangalore"
 
-const defaultCity = "Delhi"
+const defaultCity = "Jammu"
 
 const getWeather = (city) => {
     if (!city || city.trim() === "") {
