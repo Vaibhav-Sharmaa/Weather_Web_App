@@ -30,9 +30,9 @@ const getWeather = (city) => {
             humidity.innerHTML = response.main.humidity
             pressure.innerHTML = response.main.pressure
             description.innerHTML = response.weather[0].description
-            winspeed.innerHTML = response.wind.speed
-            speed.innerHTML = response.wind.speed
-            gust.innerHTML = response.wind.gust ? response.wind.gust : 0;
+            winspeed.innerHTML = (response.wind.speed * 3.6).toFixed(1);
+            speed.innerHTML = (response.wind.speed * 3.6).toFixed(1);
+            gust.innerHTML = response.wind.gust ? (response.wind.gust * 3.6).toFixed(1) : 0;
         })
         .catch(err => { alert("The city does not exist. Please check your keyword"); getWeather(defaultCity) });
 }
@@ -55,9 +55,9 @@ const getTableData = (city, id) => {
             document.getElementById(`humidity${id}`).innerHTML = response.main.humidity + " %";
             document.getElementById(`pressure${id}`).innerHTML = response.main.pressure + " hPa";
             document.getElementById(`description${id}`).innerHTML = response.weather[0].description;
-            document.getElementById(`winspeed${id}`).innerHTML = response.wind.speed + " m/s";
-            let gustValue = response.wind.gust ? response.wind.gust : 0;
-            document.getElementById(`gust${id}`).innerHTML = gustValue + " m/s";
+            document.getElementById(`winspeed${id}`).innerHTML = (response.wind.speed * 3.6).toFixed(1) + " km/h";
+            let gustValue = response.wind.gust ? (response.wind.gust * 3.6).toFixed(1) : 0;
+            document.getElementById(`gust${id}`).innerHTML = gustValue + " km/h";
         })
         .catch(err => console.error(err));
 }
